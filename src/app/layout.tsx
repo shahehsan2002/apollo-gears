@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Apollo Gears",
-  description: "Next Level Riding Sharing Service",
+  description: "Next Level Ride Sharing Service",
 };
 
 export default function RootLayout({
