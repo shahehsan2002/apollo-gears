@@ -1,5 +1,11 @@
+import { Button } from "@nextui-org/react";
+
 const Welcome = () => {
-  return <div>Welcome</div>;
+  return (
+    <div>
+      <Button>Button</Button>
+    </div>
+  );
 };
 
 export default Welcome;

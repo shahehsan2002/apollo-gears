@@ -7,7 +7,7 @@ const CarsDetailPage = ({
   searchParams: any;
 }) => {
   console.log(searchParams);
-  //fetch with filter parameterd
+  //fetch with filter perimeters
 
   return (
     <div>
