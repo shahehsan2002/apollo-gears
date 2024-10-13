@@ -1,8 +1,10 @@
+// import nexiosInstance from "@/config/nexios.config";
 import { Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const CarsDetailPage = async ({ params }: { params: { carId: string } }) => {
-  // Uncomment and use this for actual API fetching
+  //fetch with filter parameterd
+
   // const res: any = await nexiosInstance.get(`/cars/${params.carId}`, {
   //   cache: "no-store",
   //   next: {},
@@ -10,44 +12,37 @@ const CarsDetailPage = async ({ params }: { params: { carId: string } }) => {
 
   // const data = res.data.data;
 
-  // Static data for development
-  const data: Car = {
-    _id: "1",
-    name: "Mercedes-Benz E-Class",
-    brand: "Mercedes-Benz",
-    model: "E-Class",
-    image:
-      "https://c4.wallpaperflare.com/wallpaper/787/18/502/cars-hd-widescreen-high-quality-desktop-wallpaper-preview.jpg",
-    rating: 4.9,
-    fuelType: "Petrol",
-    passengerCapacity: 5,
-    color: "Black",
-    condition: "Used",
-  };
+  const res = await  fetch(`http://localhost:5000/api/v1/cars/${params.carId}`, {
+    
+    cache: "no-store",
+  });
+
+  const {data} = await res.json();
+
 
   return (
     <div className="min-h-screen flex justify-center items-center p-4 bg-gradient-to-br from-gray-100 to-gray-300 dark:from-gray-900 dark:to-gray-700">
       <Card
-        key={data._id}  
+        key={data?._id}
         className="relative w-full max-w-4xl rounded-lg overflow-hidden shadow-lg"
       >
         {/* Car Image with Overlay */}
         <div className="relative">
           <Image
             removeWrapper
-            alt={data.name}
+            alt={data?.name}
             className="w-full h-[500px] object-cover transition-transform transform hover:scale-110"
-            src={data.image}
+            src={data?.image}
           />
           {/* Frosted Glass Effect for Text Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent flex items-end p-6">
             <CardHeader className="space-y-2 backdrop-blur-md bg-white/20 p-4 rounded-lg shadow-md">
               <h4 className="text-white font-extrabold text-4xl tracking-wider uppercase">
-                {data.name}{" "}
-                <span className="text-lg text-white/70">({data.model})</span>
+                {data?.name}{" "}
+                <span className="text-lg text-white/70">({data?.model})</span>
               </h4>
               <p className="text-white/80 text-sm font-medium tracking-wide">
-                Rating: {data.rating} / 5
+                Rating: {data?.rating} / 5
               </p>
             </CardHeader>
           </div>
@@ -57,17 +52,17 @@ const CarsDetailPage = async ({ params }: { params: { carId: string } }) => {
         <CardFooter className="p-8 backdrop-blur-md bg-white/20 dark:bg-gray-800/40 rounded-b-lg shadow-lg border-t border-gray-300 dark:border-gray-600">
           <div className="grid grid-cols-2 gap-4 w-full text-gray-800 dark:text-white">
             <div className="space-y-2">
-              <p className="font-bold text-2xl">Brand: {data.brand}</p>
-              <p className="font-light text-lg">Model: {data.model}</p>
-              <p className="font-light text-lg">Color: {data.color}</p>
-              <p className="font-light text-lg">Condition: {data.condition}</p>
+              <p className="font-bold text-2xl">Brand: {data?.brand}</p>
+              <p className="font-light text-lg">Model: {data?.model}</p>
+              <p className="font-light text-lg">Color: {data?.color}</p>
+              <p className="font-light text-lg">Condition: {data?.condition}</p>
             </div>
             <div className="space-y-2">
-              <p className="font-light text-lg">Fuel Type: {data.fuelType}</p>
+              <p className="font-light text-lg">Fuel Type: {data?.fuelType}</p>
               <p className="font-light text-lg">
-                Passenger Capacity: {data.passengerCapacity}
+                Passenger Capacity: {data?.passengerCapacity}
               </p>
-              <p className="font-light text-lg">Rating: {data.rating} / 5</p>
+              <p className="font-light text-lg">Rating: {data?.rating} / 5</p>
             </div>
           </div>
           <div className="flex mt-6 space-x-4 justify-center">
