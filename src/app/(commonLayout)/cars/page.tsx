@@ -1,129 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+// import nexiosInstance from "@/config/nexios.config";
 import { Card, CardFooter, CardHeader, Image, Link } from "@nextui-org/react";
 
-// Define a Car interface to avoid using 'any'
-interface Car {
-  _id: string;
-  name: string;
-  brand: string;
-  model: string;
-  image: string;
-  rating: number;
-  fuelType: string;
-  passengerCapacity: number;
-  color: string;
-  condition: string;
-}
-
 const Cars = async () => {
-  // Placeholder car data for now
-  const data: Car[] = [
-    {
-      _id: "1",
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class",
-      image:
-        "https://c4.wallpaperflare.com/wallpaper/787/18/502/cars-hd-widescreen-high-quality-desktop-wallpaper-preview.jpg",
-      rating: 4.9,
-      fuelType: "Petrol",
-      passengerCapacity: 5,
-      color: "Black",
-      condition: "Used",
-    },
-    {
-      _id: "1",
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class",
-      image:
-        "https://c4.wallpaperflare.com/wallpaper/787/18/502/cars-hd-widescreen-high-quality-desktop-wallpaper-preview.jpg",
-      rating: 4.9,
-      fuelType: "Petrol",
-      passengerCapacity: 5,
-      color: "Black",
-      condition: "Used",
-    },
-    {
-      _id: "1",
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class",
-      image:
-        "https://c4.wallpaperflare.com/wallpaper/787/18/502/cars-hd-widescreen-high-quality-desktop-wallpaper-preview.jpg",
-      rating: 4.9,
-      fuelType: "Petrol",
-      passengerCapacity: 5,
-      color: "Black",
-      condition: "Used",
-    },
-    {
-      _id: "1",
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class",
-      image:
-        "https://c4.wallpaperflare.com/wallpaper/787/18/502/cars-hd-widescreen-high-quality-desktop-wallpaper-preview.jpg",
-      rating: 4.9,
-      fuelType: "Petrol",
-      passengerCapacity: 5,
-      color: "Black",
-      condition: "Used",
-    },
-    {
-      _id: "1",
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class",
-      image:
-        "https://c4.wallpaperflare.com/wallpaper/787/18/502/cars-hd-widescreen-high-quality-desktop-wallpaper-preview.jpg",
-      rating: 4.9,
-      fuelType: "Petrol",
-      passengerCapacity: 5,
-      color: "Black",
-      condition: "Used",
-    },
-    {
-      _id: "1",
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class",
-      image:
-        "https://c4.wallpaperflare.com/wallpaper/787/18/502/cars-hd-widescreen-high-quality-desktop-wallpaper-preview.jpg",
-      rating: 4.9,
-      fuelType: "Petrol",
-      passengerCapacity: 5,
-      color: "Black",
-      condition: "Used",
-    },
-    {
-      _id: "1",
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class",
-      image:
-        "https://c4.wallpaperflare.com/wallpaper/787/18/502/cars-hd-widescreen-high-quality-desktop-wallpaper-preview.jpg",
-      rating: 4.9,
-      fuelType: "Petrol",
-      passengerCapacity: 5,
-      color: "Black",
-      condition: "Used",
-    },
-    {
-      _id: "1",
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class",
-      image:
-        "https://c4.wallpaperflare.com/wallpaper/787/18/502/cars-hd-widescreen-high-quality-desktop-wallpaper-preview.jpg",
-      rating: 4.9,
-      fuelType: "Petrol",
-      passengerCapacity: 5,
-      color: "Black",
-      condition: "Used",
-    },
-  ];
+  const res = await fetch("http://localhost:5000/api/v1/cars", {
+    next: {},
+    cache: "no-store",
+  });
+
+  const data = await res.json();
+
+  // const { data }: any = await nexiosInstance.get("/cars", {
+  //   cache: "no-store",
+  //   next: {},
+  // });
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
@@ -134,7 +25,7 @@ const Cars = async () => {
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6 w-full max-w-7xl">
-        {data.map((item) => (
+        {data?.data?.map((item: any) => (
           <Card
             key={item._id}
             className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl hover:z-20"
