@@ -1,9 +1,10 @@
-import { Button } from "@nextui-org/react";
+
+import Banner from "./components/page/home/Banner";
 
 const Welcome = () => {
   return (
     <div>
-      <Button>Button</Button>
+      <Banner></Banner>
     </div>
   );
 };
