@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-// import nexiosInstance from "@/config/nexios.config";
+import nexiosInstance from "@/config/nexios.config";
 import { Card, CardFooter, CardHeader, Image, Link } from "@nextui-org/react";
 
 const Cars = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/cars", {
-    next: {},
-    cache: "no-store",
-  });
-
-  const data = await res.json();
-
-  // const { data }: any = await nexiosInstance.get("/cars", {
-  //   cache: "no-store",
+  // const res = await fetch("http://localhost:5000/api/v1/cars", {
   //   next: {},
+  //   cache: "no-store",
   // });
+
+  //res,json()
+
+  const { data }: any = await nexiosInstance.get("/cars", {
+    cache: "no-store",
+    next: {},
+  });
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
