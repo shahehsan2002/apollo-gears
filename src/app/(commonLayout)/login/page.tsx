@@ -1,5 +1,12 @@
-const LoginPage = () => {
-  return <div>LoginPage</div>;
-};
+import GoogleLoginBtn from "../components/page/shared/GoogleLoginBtn"
 
-export default LoginPage;
+
+const LoginPage = () => {
+  return (
+    <div>
+    <GoogleLoginBtn/>
+    </div>
+  )
+}
+
+export default LoginPage
