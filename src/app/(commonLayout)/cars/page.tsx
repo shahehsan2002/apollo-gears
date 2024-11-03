@@ -15,7 +15,7 @@ const Cars = async () => {
     cache: "no-store",
     next: {},
   });
-
+6
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
       {/* Page Title */}
